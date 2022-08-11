@@ -1,9 +1,5 @@
 # A MQTT bridge for Solis solar inverters. ##
 
-## CAUTION
-
-This is very much work in progress. I just tested that the wget can't get the archive. So for now I guess you'll have to download yourself or clone the repo and do the work a bit more manually
-
 ## Foreword
 
 I want to start by extending my deepest gratitute to incub who owns the [solis2mqtt](https://github.com/incub77/solis2mqtt) repository which served as a base for this one (from now on I call his repo the _original_).
@@ -56,16 +52,21 @@ home automation (with special support for Home Assistant), and furthermore witho
 
 * Download and install to /opt/solis2mqtt
 
-`wget https://github.com/hvoerman/solis2mqtt/archive/main.tar.gz -O - | sudo tar -xvzf - --one-top-level=/opt/solis2mqtt --strip 1`
-
+```
+sudo git clone https://github.com/hvoerman/solis2mqtt.git /opt/solis2mqtt
+```
 * Execute setup.sh. This will basically install dependencies, add a system user for the daemon to run in and setup
 systemd.
 
-`sudo bash /opt/solis2mqtt/setup.sh`
+```
+sudo bash /opt/solis2mqtt/setup.sh
+```
 
 * To see whether or not the converter is connected, use:
 
-`lsusb`
+```
+lsusb
+```
 
 My output is
 
@@ -84,7 +85,9 @@ e.g. `sudo vi /opt/solis2mqtt/config.yaml`
 
 * A reboot is necessary for user rights (access to /dev/ttyUSB*) to become effective.
 
-`sudo reboot`
+```
+sudo reboot
+```
 
 ## Usage
 
@@ -112,9 +115,9 @@ python ./solis2mqtt_v2.py -s
 The following command line arguments are implemented:
 * `-v` or `--verbose` Verbose mode. Will output debug logging messages.
 * `-s` or `--service` Run as service. Meaning also send logging messages to stdout to enable log viewing with:
-  ```
-  journalctl -u solis2mqtt.service -f --output=short-iso-precise
-  ```
+```
+journalctl -u solis2mqtt.service -f --output=short-iso-precise
+```
 * `--help` See the usage.
 
 ## Basic Configuration
