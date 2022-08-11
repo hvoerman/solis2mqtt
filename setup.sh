@@ -3,7 +3,7 @@
 pushd  /opt/solismqtt
 
 echo "### Installing pip3 ###"
-apt install python3 python3-pip
+apt-get -y install python3 python3-pip
 
 echo "### Installing requirements ###"
 pip3 install -r requirements.txt
