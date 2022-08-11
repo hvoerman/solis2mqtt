@@ -1,5 +1,9 @@
 # A MQTT bridge for Solis solar inverters. ##
 
+## CAUTION
+
+This is very much work in progress. I just tested that the wget can't get the archive. So for now I guess you'll have to download yourself or clone the repo and do the work a bit more manually
+
 ## Foreword
 
 I want to start by extending my deepest gratitute to incub who owns the [solis2mqtt](https://github.com/incub77/solis2mqtt) repository which served as a base for this one (from now on I call his repo the _original_).
