@@ -18,13 +18,13 @@ from inverter import Inverter
 from mqtt import Mqtt
 from mqtt_discovery import DiscoverMsgNumber, DiscoverMsgSensor, DiscoverMsgSwitch
 
-VERSION = "0.8.4"
+VERSION = "0.8.5"
 CONFIG_FILE = "config.yaml"
 SOLIS_MODBUS_CONFIG = "solis_modbus.yaml"
+SUNSET_THRESHOLD = -10
 
 
 class Solis2Mqtt:
-
     def __init__(self):
         self.cfg = Config("config.yaml")
         self.register_cfg = ...
@@ -185,7 +185,7 @@ class Solis2Mqtt:
         logging.info("Sunhigh: %s", sunhigh.isoformat())
         logging.info("Sunset : %s", sunset.isoformat())
 
-        if solar_altitude < -1:
+        if solar_altitude < SUNSET_THRESHOLD:
             return 2
 
         self.generate_ha_discovery_topics()
@@ -299,7 +299,12 @@ if __name__ == "__main__":
     if exit_value == 3:
         logging.info("Inverter unreachable, but sun almost up, exit(%s)", exit_value)
     elif exit_value == 2:
-        logging.info("Sun is down more than -1 degree, so wait, exit(%s)", exit_value)
+        logging.info(
+            "Sun is down more than %s degree%s, so wait, exit(%s)",
+            SUNSET_THRESHOLD,
+            "" if abs(SUNSET_THRESHOLD) == 1 else "s",
+            exit_value,
+        )
     else:
         logging.info("Normal operation, exit(%s)", exit_value)
 
