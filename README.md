@@ -1,7 +1,7 @@
 # A MQTT bridge for Solis solar inverters. ##
 
 ## Foreword
----
+
 I want to start by extending my deepest gratitute to incub who owns the [solis2mqtt](https://github.com/incub77/solis2mqtt) repository which served as a base for this one (from now on I call his repo the _original_).
 
 I made several changes:
@@ -17,9 +17,7 @@ All text marked with an <sup>*</sup> is the original text from *incub*.
 
 When using the _original_ I observed that the connection to the inverter was lost quite fast, like after 10-20 runs. The _original_ then just waits for a longer period of time to try again. There is no reinitialization of the serial port. This observation let me to do this work. Of course I could have put some serial reinitialization into the _original_ but I leave that to another volunteer. And yes, I know I had to sacrfice the On/Off switch and the ability to change the Power limitation.
 
-
 ## Introduction<sup>*</sup>
----
 
 Solis solar inverters are equipped with an RS485 interface, through which telemetry values can be read and also control
 commands can be sent. The manufacturer offers LAN and WLAN sticks in combination with a software solution to access the
@@ -29,7 +27,6 @@ This software acts as a bridge between the RS485 interface and a MQTT broker to 
 home automation (with special support for Home Assistant), and furthermore without cloud constraints.
 
 ## Hardware
----
 
 * The inverter uses a proprietary(?) RS485 plug, with the following pin-out (at least on my wifi stick, it is different than described in the _original_):
 ```
@@ -51,7 +48,6 @@ home automation (with special support for Home Assistant), and furthermore witho
 * I run the software on a Raspberry Pi 3 Model B Rev 1.2B, but any Linux box should do I guess.
 
 ## Installation
----
 
 * Download and install to /opt/solis2mqtt
 
@@ -86,7 +82,6 @@ e.g. `sudo vi /opt/solis2mqtt/config.yaml`
 `sudo reboot`
 
 ## Usage<sup>*</sup>
----
 
 Solis2MQTT is intended to run as a system service. A log file is written to `/opt/solis2mqtt/solis2mqtt.log`. To control
 the service, the usual systemd commands are used:
@@ -114,7 +109,6 @@ The following command line arguments are implemented:
 * `--help` ...
 
 ## Basic Configuration
----
 
 Configuration is read from `config.yaml`, that has to contain at least these entries:
 
@@ -166,12 +160,9 @@ mqtt:
 
 ### latitude / longitude
 
-
 You can figure out your latitude and longitude from the URL from the “Link to this page” link on Google maps. Find your location on the map, click on the “Link to this page” link, and then look at the URL in the address bar of your browser. In between ampersands, you should see something like ll=89.123456,-78.912345. The first number is your latitude; the second is your longitude.
 
-
 ## Inverter configuration<sup>*</sup>
----
 
 The file `solis_modbus.yaml` contains a list of entries, that describe the values to read from
 (and write to) the inverter.\
@@ -252,12 +243,11 @@ datetime string.
 
 
 ## Screenshots
----
 
 These are taken rather soon after I got stuff to work, so they are not fully representative. I will replace these screenshots with more representative ones in the near future.
 
 ### Simple dashboard with APEX chart
----
+
 ![simple ha dashboard with apex charts](img/Screenshot1.png)
 
 APEX chart code is
@@ -290,12 +280,10 @@ series:
 * `huidige productie` means *current production*
 
 ### MQTT Broker Integration Overview
----
 
 ![Integration details](img/Screenshot2.png)
 
 ### Energy Dashboard
----
 
 ![Energy dashboard](img/Screenshot3.png)
 
