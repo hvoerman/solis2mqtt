@@ -1,0 +1,7 @@
+device: <path>
+latitude: <latitude>
+longitude: <longitude>
+mqtt:
+    url: <url>
+    user: <user>
+    passwd: <password>

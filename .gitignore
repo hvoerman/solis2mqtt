@@ -1,0 +1,9 @@
+config.yaml
+venv
+__pycache__
+data
+**/*.log
+archive/**
+test/**
+.vscode
+.vscode/**

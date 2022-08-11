@@ -1,0 +1,15 @@
+device: /dev/ttyUSB0
+slave_address: 1
+latitude:
+longitude:
+inverter:
+    name: solis2mqtt
+    manufacturer: Ginlong Technologies
+    model:
+mqtt:
+    url: hassio.local
+    port: 1883
+    use_ssl: true
+    validate_cert: true
+    user: whoami
+    passwd: secret

@@ -1,0 +1,4 @@
+minimalmodbus
+pyyaml
+paho-mqtt
+pysolar

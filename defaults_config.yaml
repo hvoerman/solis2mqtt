@@ -1,0 +1,15 @@
+device:
+slave_address: 1
+latitude:
+longitude:
+inverter:
+    name: solis2mqtt
+    manufacturer: solis2mqtt
+    model: solis2mqtt
+mqtt:
+    url:
+    port: 1883
+    use_ssl: true
+    validate_cert: true
+    user:
+    passwd:
