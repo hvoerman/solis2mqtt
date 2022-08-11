@@ -10,6 +10,7 @@ I made several changes:
 3. An additional run.sh is added to do the repeating. Sleep duractions are based on the errorlevel of the script.
 4. Additional sensors are added to the solis_modbus.yaml file, like the v_dc1, i_dc1, v_ac, i_ac and grid frequency.
 5. The On/Off switch and Power limitation are removed because of these changes. They require a continuous listener and that does not fit this design principle. If you need this, use the _original_.
+6. This is work in progress. I'm not sure the setup.sh works like it should as I have not taken time to do the install on an empty Raspberry Pi. So please test it and let me know the resulst.
 
 All text marked with an <sup>*</sup> is the original text from *incub*.
 
