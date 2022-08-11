@@ -1,9 +1,6 @@
 config.yaml
-venv
 __pycache__
-data
 **/*.log
-archive/**
-test/**
+archive
+test
 .vscode
-.vscode/**
