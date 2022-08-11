@@ -81,7 +81,7 @@ e.g. `sudo vi /opt/solis2mqtt/config.yaml`
 
 `sudo reboot`
 
-## Usage<sup>*</sup>
+## Usage
 
 Solis2MQTT is intended to run as a system service. A log file is written to `/opt/solis2mqtt/solis2mqtt.log`. To control
 the service, the usual systemd commands are used:
@@ -93,8 +93,8 @@ the service, the usual systemd commands are used:
 
 To check if the service is running you can do a `ps -efH | grep solis2mqtt`. The output should look something like this:
 ```
-solis2m+   460     1  0 22:53 ?        00:00:08   /usr/bin/python3 solis2mqtt.py -d
-pi         559   501  0 23:13 pts/0    00:00:00           grep --color=auto solis2mqtt
+pi       14226 10644  0 12:11 pts/2    00:00:00           grep --color=auto solis2mqtt
+solis2m+ 12473     1  0 11:43 ?        00:00:00   /bin/bash /opt/solis2mqtt/run.sh
 ```
 
 If Solis2MQTT doesn't start up to a point where the log file is written you can check `/var/log/syslog` for clues.
