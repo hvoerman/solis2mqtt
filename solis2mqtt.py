@@ -119,7 +119,7 @@ class Solis2Mqtt:
 
     def subscribe(self) -> None:
         for entry in self.register_cfg:
-            if "write_function_code" in entry["modbus"]:
+            if entry["active"] and "write_function_code" in entry["modbus"]:
                 if not self.mqtt.on_message:
                     self.mqtt.on_message = self.on_mqtt_message
                 # logging.info("Subscribing to: " + self.cfg['inverter']['name'] + "/"
