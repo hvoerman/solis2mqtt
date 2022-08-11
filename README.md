@@ -102,11 +102,15 @@ If Solis2MQTT doesn't start up to a point where the log file is written you can 
 For development/debugging Solis2MQTT can also be started directly. Make sure to change to the working directory before doing so.
 ```
 cd /opt/solis2mqtt
-python3 ./solis2mqtt_v2.py
+python ./solis2mqtt_v2.py -s
 ```
 The following command line arguments are implemented:
-* `-v` Verbose mode. Will output debug logging messages.
-* `--help` ...
+* `-v` or `--verbose` Verbose mode. Will output debug logging messages.
+* `-s` or `--service` Run as service. Meaning also send logging messages to stdout to enable log viewing with:
+  ```
+  journalctl -u solis2mqtt.service -f --output=short-iso-precise
+  ```
+* `--help` See the usage.
 
 ## Basic Configuration
 
