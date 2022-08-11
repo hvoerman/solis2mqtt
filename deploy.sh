@@ -17,4 +17,4 @@ systemctl stop solis2mqtt.service
 systemctl start solis2mqtt.service
 '
 
-# journalctl -u solis2mqtt.service -f --output=short-iso-precise
+echo "To view the logging, use: journalctl -u solis2mqtt.service -f --output=short-iso-precise"
