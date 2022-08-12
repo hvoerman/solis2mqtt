@@ -26,7 +26,7 @@ while true; do
         sleep_interval=300
     elif [ ${error_level} -eq 3 ]; then
         # inverter unreachable and sun is up, so try again soon
-        sleep_interval=10
+        sleep_interval=30
     else
         # default, sun is (almost) up or inverter is reachable
         sleep_interval=60
