@@ -22,10 +22,10 @@ while true; do
         # script execution error
         sleep_interval=20
     elif [ ${error_level} -eq 2 ]; then
-        # sun is below minus 1 degree
+        # inverter unreachable and sun is down
         sleep_interval=300
     elif [ ${error_level} -eq 3 ]; then
-        # sun is up and inverter unreachable, so try again soon
+        # inverter unreachable and sun is up, so try again soon
         sleep_interval=10
     else
         # default, sun is (almost) up or inverter is reachable

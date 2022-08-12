@@ -18,7 +18,7 @@ from inverter import Inverter
 from mqtt import Mqtt
 from mqtt_discovery import DiscoverMsgNumber, DiscoverMsgSensor, DiscoverMsgSwitch
 
-VERSION = "0.8.5"
+VERSION = "0.8.6"
 CONFIG_FILE = "config.yaml"
 SOLIS_MODBUS_CONFIG = "solis_modbus.yaml"
 SUNSET_THRESHOLD = -10
@@ -185,8 +185,8 @@ class Solis2Mqtt:
         logging.info("Sunhigh: %s", sunhigh.isoformat())
         logging.info("Sunset : %s", sunset.isoformat())
 
-        if solar_altitude < SUNSET_THRESHOLD:
-            return 2
+        # if solar_altitude < SUNSET_THRESHOLD:
+        #     return 2
 
         self.generate_ha_discovery_topics()
         self.subscribe()
@@ -248,7 +248,16 @@ class Solis2Mqtt:
 
             self.mqtt.publish(f"{self.cfg['inverter']['name']}/{entry['name']}", value, retain=True)
 
-        return 3 if self.inverter_offline and solar_altitude > 0 else 0
+        # if self.inverter_offline:
+        #     return_value = 3 if solar_altitude > 0 else 2
+        # else:
+        #     return_value = 0
+
+        # return_value = 0 if not self.inverter_offline else 3 if solar_altitude > 0 else 2
+
+        return 0 if not self.inverter_offline else 2 if solar_altitude < 0 else 3
+        # return return_value
+        # return 3 if self.inverter_offline and solar_altitude > 0 else 0
 
 
 if __name__ == "__main__":
@@ -297,12 +306,10 @@ if __name__ == "__main__":
         exit(1)
 
     if exit_value == 3:
-        logging.info("Inverter unreachable, but sun almost up, exit(%s)", exit_value)
+        logging.info("Inverter unreachable and sun is up, exit(%s)", exit_value)
     elif exit_value == 2:
         logging.info(
-            "Sun is down more than %s degree%s, so wait, exit(%s)",
-            SUNSET_THRESHOLD,
-            "" if abs(SUNSET_THRESHOLD) == 1 else "s",
+            "Inverter unreachable and sun is down, exit(%s)",
             exit_value,
         )
     else:
