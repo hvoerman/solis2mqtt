@@ -185,8 +185,8 @@ class Solis2Mqtt:
         logging.info("Sunhigh: %s", sunhigh.isoformat())
         logging.info("Sunset : %s", sunset.isoformat())
 
-        # if solar_altitude < SUNSET_THRESHOLD:
-        #     return 2
+        if solar_altitude < SUNSET_THRESHOLD:
+            return 4
 
         self.generate_ha_discovery_topics()
         self.subscribe()
@@ -305,7 +305,14 @@ if __name__ == "__main__":
         logging.error("Main exception", exc_info=True)
         exit(1)
 
-    if exit_value == 3:
+    if exit_value == 4:
+        logging.info(
+            "Sun is down more than %s degree%s, so wait long, exit(%s)",
+            SUNSET_THRESHOLD,
+            "" if abs(SUNSET_THRESHOLD) == 1 else "s",
+            exit_value
+        )
+    elif exit_value == 3:
         logging.info("Inverter unreachable and sun is up, exit(%s)", exit_value)
     elif exit_value == 2:
         logging.info(
