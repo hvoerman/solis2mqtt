@@ -27,6 +27,9 @@ while true; do
     elif [ ${error_level} -eq 3 ]; then
         # inverter unreachable and sun is up, so try again soon
         sleep_interval=30
+    elif [ ${error_level} -eq 4 ]; then
+        # inverter unreachable and sun is very down, so wait long
+        sleep_interval=600
     else
         # default, sun is (almost) up or inverter is reachable
         sleep_interval=60
