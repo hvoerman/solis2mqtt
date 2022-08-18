@@ -281,11 +281,12 @@ header:
 series:
   - entity: sensor.active_power
     stroke_width: 1
-    type: line
-    curve: stepline
+    type: area
+    curve: smooth
     extend_to: false
     name: huidige productie
-    unit: W
+    unit: ' W'
+
 ```
 
 * `Solar vermogen gisteren en vandaag` means: *Solar power yesterday and today*
@@ -299,4 +300,4 @@ series:
 
 ![Energy dashboard](img/Screenshot3.png)
 
-Just add the `Inverter total power generation` sensor to the Solar Panels stuff and add (if you like) the forecast to it.
+Just add the `Energy generated today` `(sensor.energy_generated_today)` sensor to the Solar Panels stuff and add (if you like) the forecast to it.
