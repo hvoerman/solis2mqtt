@@ -6,7 +6,7 @@ echo "### Installing pip3 ###"
 apt-get -y install python3 python3-pip
 
 echo "### Installing requirements ###"
-pip3 install -r requirements.txt
+pip3 install -r /opt/solis2mqtt/requirements.txt
 
 echo "### Creating config file if no config exists ###"
 [ ! -f config.yaml ] && cp /opt/solis2mqtt/config.yaml.minimal /opt/solis2mqtt/config.yaml
