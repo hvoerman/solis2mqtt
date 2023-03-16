@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pushd  /opt/solismqtt
+pushd /opt/solis2mqtt
 
 echo "### Installing pip3 ###"
 apt-get -y install python3 python3-pip
